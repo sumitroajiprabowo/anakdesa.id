@@ -35,3 +35,23 @@ describe('Channel', () => {
     expect(screen.getByText('Video Terbaru')).toBeInTheDocument()
   })
 })
+
+describe('Channel (no video)', () => {
+  it('renders placeholder when no latest video', async () => {
+    // Reset modules to apply new mock
+    vi.resetModules()
+    vi.doMock('@/lib/youtube', () => ({
+      getLatestVideo: vi.fn().mockResolvedValue(null),
+    }))
+
+    const { default: Channel } = await import('@/components/Channel')
+    const jsx = await Channel()
+    const { container } = render(jsx)
+
+    // Should show empty placeholder div instead of YouTubePlayer
+    const placeholder = container.querySelector('.aspect-video')
+    expect(placeholder).toBeInTheDocument()
+    // Should NOT show the "Video Terbaru" tag
+    expect(screen.queryByText('Video Terbaru')).not.toBeInTheDocument()
+  })
+})

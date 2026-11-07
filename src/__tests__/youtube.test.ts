@@ -57,4 +57,41 @@ describe('getLatestVideo', () => {
     const video = await getLatestVideo()
     expect(video).toBeNull()
   })
+
+  it('returns null when entry lacks videoId or title', async () => {
+    const noTitle = `<?xml version="1.0"?>
+      <feed xmlns:yt="http://www.youtube.com/xml/schemas/2015">
+        <entry>
+          <yt:videoId>xyz789</yt:videoId>
+        </entry>
+      </feed>`
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(noTitle, { status: 200 }),
+    )
+
+    expect(await getLatestVideo()).toBeNull()
+  })
+
+  it('falls back to empty string when published is missing', async () => {
+    const noPub = `<?xml version="1.0"?>
+      <feed xmlns:yt="http://www.youtube.com/xml/schemas/2015">
+        <entry>
+          <yt:videoId>nopub1</yt:videoId>
+          <title>No Published Date</title>
+          <link rel="alternate" href="https://youtube.com/watch?v=nopub1"/>
+        </entry>
+      </feed>`
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(noPub, { status: 200 }),
+    )
+
+    const video = await getLatestVideo()
+    expect(video).toEqual({
+      id: 'nopub1',
+      title: 'No Published Date',
+      thumbnail: 'https://i.ytimg.com/vi/nopub1/hqdefault.jpg',
+      url: 'https://youtube.com/watch?v=nopub1',
+      published: '',
+    })
+  })
 })
