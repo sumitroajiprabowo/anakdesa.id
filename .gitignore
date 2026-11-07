@@ -46,3 +46,5 @@ skills-lock.json
 # Agent skills (installed locally via `npx skills add`)
 .claude/
 .agents/
+.vercel
+.env*

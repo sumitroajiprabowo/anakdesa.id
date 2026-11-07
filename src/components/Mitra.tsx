@@ -2,9 +2,6 @@ import Image from 'next/image'
 import { partners } from '@/content/data'
 
 export default function Mitra() {
-  // Quadruple the list so the marquee never shows gaps on wide screens
-  const track = [...partners, ...partners, ...partners, ...partners]
-
   return (
     <section
       id="mitra"
@@ -16,11 +13,24 @@ export default function Mitra() {
         </p>
       </div>
 
-      <div className="mt-10 overflow-hidden">
+      <div className="marquee-wrapper mt-10">
+        {/* Two identical tracks side by side for seamless infinite scroll */}
         <div className="marquee-track">
-          {track.map((p, i) => (
+          {partners.map((p) => (
             <Image
-              key={`${p.nama}-${i}`}
+              key={p.nama}
+              src={p.logo}
+              alt={p.nama}
+              width={120}
+              height={56}
+              className="h-14 w-auto shrink-0 object-contain grayscale transition-all duration-300 hover:grayscale-0"
+            />
+          ))}
+        </div>
+        <div className="marquee-track" aria-hidden="true">
+          {partners.map((p) => (
+            <Image
+              key={p.nama}
               src={p.logo}
               alt={p.nama}
               width={120}

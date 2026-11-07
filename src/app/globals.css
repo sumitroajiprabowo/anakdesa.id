@@ -167,24 +167,30 @@ h4 {
   transform: scale(1.05);
 }
 
-/* === Marquee (partner logos) === */
+/* === Marquee (partner logos) — seamless infinite scroll === */
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-25%);
+    transform: translateX(-100%);
   }
+}
+
+.marquee-wrapper {
+  display: flex;
+  overflow: hidden;
 }
 
 .marquee-track {
   display: flex;
   gap: 4rem;
-  animation: marquee 25s linear infinite;
-  width: max-content;
+  padding-right: 4rem;
+  animation: marquee 20s linear infinite;
+  flex-shrink: 0;
 }
 
-.marquee-track:hover {
+.marquee-wrapper:hover .marquee-track {
   animation-play-state: paused;
 }
 
@@ -275,6 +281,9 @@ h4 {
   }
   .marquee-track {
     animation: none;
+  }
+  .marquee-wrapper {
+    overflow-x: auto;
   }
   .reveal,
   .reveal-fade,

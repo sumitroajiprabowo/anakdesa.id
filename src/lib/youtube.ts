@@ -16,7 +16,7 @@ export type LatestVideo = {
  */
 export async function getLatestVideo(): Promise<LatestVideo | null> {
   try {
-    const res = await fetch(RSS_URL, { next: { revalidate: false } })
+    const res = await fetch(RSS_URL, { next: { revalidate: 3600 } })
     if (!res.ok) return null
 
     const xml = await res.text()
