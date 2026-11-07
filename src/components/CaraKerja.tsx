@@ -1,9 +1,12 @@
+'use client'
+
 import {
   ChatBubbleIcon,
   Pencil2Icon,
   RocketIcon,
   BarChartIcon,
 } from '@radix-ui/react-icons'
+import { motion } from 'motion/react'
 import { langkah } from '@/content/data'
 import MotionReveal, { StaggerContainer, StaggerItem } from './MotionReveal'
 
@@ -28,7 +31,10 @@ export default function CaraKerja() {
             const Icon = icons[i]
             return (
               <StaggerItem key={l.judul} variant="scale">
-                <div className="group bg-kapur hover:bg-kapur-warm h-full p-6 transition-colors duration-300 md:p-8">
+                <motion.div
+                  whileHover={{ y: -4, transition: { duration: 0.25 } }}
+                  className="group bg-kapur hover:bg-kapur-warm h-full cursor-default p-6 transition-colors duration-300 md:p-8"
+                >
                   <div className="flex items-start justify-between">
                     <span className="font-display text-merah/15 block text-5xl md:text-6xl">
                       {String(i + 1).padStart(2, '0')}
@@ -45,7 +51,7 @@ export default function CaraKerja() {
                   <p className="text-teks-muted mt-2 text-sm leading-relaxed">
                     {l.deskripsi}
                   </p>
-                </div>
+                </motion.div>
               </StaggerItem>
             )
           })}
