@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#1A1C1E"/>
+  <rect y="0" width="640" height="4" fill="#E3120B"/>
+  <rect x="0" y="340" width="640" height="20" fill="#E3120B" opacity="0.15"/>
+  <circle cx="305" cy="145" r="12" fill="white" opacity="0.12"/><circle cx="335" cy="145" r="12" fill="white" opacity="0.12"/><circle cx="320" cy="155" r="15" fill="white" opacity="0.08"/>
+  <text x="320" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="white">Satlantas</text>
+  <text x="320" y="232" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#E3120B" text-transform="uppercase" letter-spacing="2">Fanbase Instansi</text>
+  <text x="320" y="348" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="white" opacity="0.4">Foto: screenshot akun fanbase Satlantas</text>
+</svg>

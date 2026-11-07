@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#2A2C2E"/>
+  <rect x="0" y="0" width="640" height="3" fill="#E3120B"/>
+  <polygon points="300,150 300,210 350,180" fill="white" opacity="0.2"/>
+  <text x="320" y="260" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="white" opacity="0.4">Video terbaru</text>
+</svg>

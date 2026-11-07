@@ -1,0 +1,48 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_*
+ima
+ima.pub
+ima-anakdesa
+ima-anakdesa.pub
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build / deps
+node_modules/
+.next/
+out/
+dist/
+.vercel/
+tsconfig.tsbuildinfo
+
+# Development screenshots & temp images
+screenshots/
+*.png
+!public/**/*.png
+framer-assets/
+
+# Test coverage
+coverage/
+
+# Playwright testing artifacts
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Local tooling state
+.omc/
+skills-lock.json
+
+# Agent skills (installed locally via `npx skills add`)
+.claude/
+.agents/

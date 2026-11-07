@@ -1,0 +1,27 @@
+# Auto detect text files and ensure LF line endings
+* text=auto eol=lf
+
+# Explicitly declare text files
+*.ts text
+*.tsx text
+*.js text
+*.mjs text
+*.json text
+*.css text
+*.md text
+*.yml text
+*.yaml text
+*.html text
+*.svg text
+
+# Declare binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# Lock files — generated, don't diff
+package-lock.json -diff linguist-generated=true

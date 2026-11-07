@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anakdesa.id/sitemap.xml

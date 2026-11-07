@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#1A1C1E"/>
+  <!-- Grid of "video frames" -->
+  <g opacity="0.06">
+    <rect x="60" y="60" width="420" height="236" rx="8" fill="white"/>
+    <rect x="510" y="60" width="420" height="236" rx="8" fill="white"/>
+    <rect x="960" y="60" width="420" height="236" rx="8" fill="white"/>
+    <rect x="1410" y="60" width="420" height="236" rx="8" fill="white"/>
+    <rect x="60" y="330" width="420" height="236" rx="8" fill="white"/>
+    <rect x="510" y="330" width="420" height="236" rx="8" fill="white"/>
+    <rect x="960" y="330" width="420" height="236" rx="8" fill="white"/>
+    <rect x="1410" y="330" width="420" height="236" rx="8" fill="white"/>
+    <rect x="60" y="600" width="420" height="236" rx="8" fill="white"/>
+    <rect x="510" y="600" width="420" height="236" rx="8" fill="white"/>
+    <rect x="960" y="600" width="420" height="236" rx="8" fill="white"/>
+    <rect x="1410" y="600" width="420" height="236" rx="8" fill="white"/>
+  </g>
+  <!-- Play buttons in frames -->
+  <g opacity="0.04" fill="white">
+    <polygon points="240,155 240,200 275,177"/>
+    <polygon points="690,155 690,200 725,177"/>
+    <polygon points="1140,155 1140,200 1175,177"/>
+    <polygon points="240,425 240,470 275,447"/>
+    <polygon points="690,425 690,470 725,447"/>
+    <polygon points="1140,425 1140,470 1175,447"/>
+  </g>
+  <!-- Red accent line -->
+  <rect x="0" y="0" width="1920" height="4" fill="#E3120B" opacity="0.6"/>
+</svg>

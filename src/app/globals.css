@@ -1,0 +1,307 @@
+@import 'tailwindcss';
+
+@theme {
+  /* === Colors: "Siaran dari Desa" palette === */
+  --color-merah: #e3120b;
+  --color-merah-deep: #b80e09;
+  --color-arang: #1a1c1e;
+  --color-arang-light: #2a2c2e;
+  --color-kapur: #f3f4ef;
+  --color-kapur-warm: #e8e5de;
+  --color-hijau: #2e5a3c;
+  --color-kuning: #f4c430;
+  --color-teks: #26282a;
+  --color-teks-muted: #6b6d6f;
+  --color-teks-on-dark: #e0e0e0;
+  --color-border: #d4d1ca;
+
+  /* === Typography === */
+  --font-body: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+}
+
+/* === Base === */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-kapur);
+  color: var(--color-teks);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Typography: tighter, bolder — Specialized-inspired === */
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.025em;
+}
+
+/* === Scroll-reveal animations === */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-fade.is-visible {
+  animation: reveal-fade 0.6s ease-out forwards;
+}
+
+.reveal-scale.is-visible {
+  animation: reveal-scale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered children */
+.reveal-stagger.is-visible > * {
+  opacity: 0;
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.reveal-stagger.is-visible > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.reveal-stagger.is-visible > *:nth-child(2) {
+  animation-delay: 100ms;
+}
+.reveal-stagger.is-visible > *:nth-child(3) {
+  animation-delay: 200ms;
+}
+.reveal-stagger.is-visible > *:nth-child(4) {
+  animation-delay: 300ms;
+}
+.reveal-stagger.is-visible > *:nth-child(5) {
+  animation-delay: 400ms;
+}
+.reveal-stagger.is-visible > *:nth-child(6) {
+  animation-delay: 500ms;
+}
+
+/* === Hero entrance animation === */
+@keyframes hero-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.hero-animate > * {
+  opacity: 0;
+  animation: hero-text-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-animate > *:nth-child(1) {
+  animation-delay: 200ms;
+}
+.hero-animate > *:nth-child(2) {
+  animation-delay: 400ms;
+}
+.hero-animate > *:nth-child(3) {
+  animation-delay: 600ms;
+}
+.hero-animate > *:nth-child(4) {
+  animation-delay: 800ms;
+}
+
+/* === Card hover lift === */
+.card-hover {
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* === Image zoom on hover === */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* === Marquee (partner logos) === */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 25s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* === Category pill badge === */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+/* === CTA button pulse === */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(227, 18, 11, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(227, 18, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(227, 18, 11, 0);
+  }
+}
+
+.btn-pulse:hover {
+  animation: pulse-ring 1.5s ease infinite;
+}
+
+/* === Smooth link underline animation === */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* === Gradient text shimmer === */
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-merah) 0%,
+    #ff6b5a 25%,
+    var(--color-merah) 50%,
+    #ff6b5a 75%,
+    var(--color-merah) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 4s linear infinite;
+}
+
+/* === Glow effect === */
+.glow-merah {
+  box-shadow:
+    0 0 30px rgba(227, 18, 11, 0.15),
+    0 0 60px rgba(227, 18, 11, 0.05);
+}
+
+/* === Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .reveal,
+  .reveal-fade,
+  .reveal-scale {
+    opacity: 1;
+  }
+  .reveal.is-visible,
+  .reveal-fade.is-visible,
+  .reveal-scale.is-visible {
+    animation: none;
+    opacity: 1;
+  }
+  .reveal-stagger.is-visible > * {
+    animation: none;
+    opacity: 1;
+  }
+  .hero-animate > * {
+    animation: none;
+    opacity: 1;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+  .img-zoom:hover img {
+    transform: none;
+  }
+  .btn-pulse:hover {
+    animation: none;
+  }
+}
