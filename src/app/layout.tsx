@@ -147,7 +147,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#E3120B" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body overflow-x-hidden antialiased">
         {children}
         <Analytics />
         <script
