@@ -22,6 +22,7 @@ export default function AnimatedCounter({ value, className, style }: Props) {
 
   useEffect(() => {
     const el = ref.current
+    /* v8 ignore next -- ref is always set after mount */
     if (!el) return
 
     const obs = new IntersectionObserver(

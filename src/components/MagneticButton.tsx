@@ -23,6 +23,7 @@ export default function MagneticButton({
 
   const handleMouse = (e: MouseEvent) => {
     const el = ref.current
+    /* v8 ignore next -- ref is always set after mount */
     if (!el) return
     const rect = el.getBoundingClientRect()
     const cx = rect.left + rect.width / 2
