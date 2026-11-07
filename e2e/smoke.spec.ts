@@ -11,7 +11,7 @@ test.describe('anakdesa.id smoke tests', () => {
     await expect(page.getByText('Suara Desa')).toBeVisible()
 
     // Stats section
-    await expect(page.getByText('Subscriber')).toBeVisible()
+    await expect(page.getByText('Subscriber').first()).toBeVisible()
 
     // Karya section
     await expect(page.getByText(/Karya Pilihan/i)).toBeVisible()
@@ -20,10 +20,10 @@ test.describe('anakdesa.id smoke tests', () => {
     await expect(page.locator('#channel')).toBeVisible()
 
     // Layanan section
-    await expect(page.getByText(/Apa yang Kami/i)).toBeVisible()
+    await expect(page.getByText(/Yang Kami Lakukan/i)).toBeVisible()
 
-    // Cara Kerja section
-    await expect(page.getByText(/Cara Kerja/i)).toBeVisible()
+    // Alur Kolaborasi section
+    await expect(page.getByText(/Alur Kolaborasi/i)).toBeVisible()
 
     // Mitra section
     await expect(page.getByText(/Pernah Berkolaborasi/i)).toBeVisible()

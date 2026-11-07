@@ -15,6 +15,8 @@ export default function CTA() {
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a
             href="https://wa.me/6287878022856"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group text-merah inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-3.5 text-sm font-bold tracking-wider uppercase transition-all hover:bg-white/90 active:scale-[0.96]"
           >
             <ChatBubbleIcon
