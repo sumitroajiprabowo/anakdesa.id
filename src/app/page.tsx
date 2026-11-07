@@ -11,7 +11,6 @@ import CaraKerja from '@/components/CaraKerja'
 import Mitra from '@/components/Mitra'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
-import Reveal from '@/components/Reveal'
 
 export default function Home() {
   return (
@@ -19,31 +18,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Reveal>
-          <Stats />
-        </Reveal>
-        <Reveal>
-          <Karya />
-        </Reveal>
-        <Reveal>
-          <Channel />
-        </Reveal>
-        <Reveal>
-          <Layanan />
-        </Reveal>
-        <Reveal>
-          <CaraKerja />
-        </Reveal>
-        <Reveal variant="fade">
-          <Mitra />
-        </Reveal>
-        <Reveal>
-          <CTA />
-        </Reveal>
+        <Stats />
+        <Karya />
+        <Channel />
+        <Layanan />
+        <CaraKerja />
+        <Mitra />
+        <CTA />
       </main>
-      <Reveal variant="fade">
-        <Footer />
-      </Reveal>
+      <Footer />
     </>
   )
 }

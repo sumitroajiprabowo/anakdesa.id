@@ -82,30 +82,42 @@ export default function Karya() {
                 <button
                   key={f}
                   onClick={() => setActive(f)}
-                  className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
+                  className={`relative rounded-full px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
                     active === f
-                      ? 'bg-merah text-white'
+                      ? 'text-white'
                       : 'text-white/35 hover:text-white/60'
                   }`}
                 >
-                  {f}
+                  {/* Animated active pill background */}
+                  {active === f && (
+                    <motion.span
+                      layoutId="karya-filter"
+                      className="bg-merah absolute inset-0 rounded-full"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                  <span className="relative z-10">{f}</span>
                 </button>
               ))}
             </div>
           </MotionReveal>
         </div>
 
-        {/* Typography-driven portfolio list with AnimatePresence */}
+        {/* Portfolio list with AnimatePresence */}
         <div className="mt-10 md:mt-14">
           <AnimatePresence mode="popLayout">
             {filtered.map((item, i) => (
               <motion.div
                 key={`${item.mitra}-${item.kategori}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, scale: 0.97, filter: 'blur(4px)' }}
                 transition={{
-                  duration: 0.35,
+                  duration: 0.4,
                   delay: i * 0.04,
                   ease: [0.16, 1, 0.3, 1],
                 }}

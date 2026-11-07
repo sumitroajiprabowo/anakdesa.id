@@ -1,6 +1,26 @@
+'use client'
+
 import Image from 'next/image'
 import { ArrowDownIcon, ChatBubbleIcon } from '@radix-ui/react-icons'
+import { motion } from 'motion/react'
 import MagneticButton from './MagneticButton'
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+  },
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
+  },
+}
 
 export default function Hero() {
   return (
@@ -12,34 +32,49 @@ export default function Hero() {
           alt=""
           role="presentation"
           fill
+          loading="eager"
           className="object-cover opacity-20"
         />
         <div className="from-arang via-arang/60 to-arang/20 absolute inset-0 bg-gradient-to-t" />
       </div>
 
-      {/* Content */}
+      {/* Content — staggered entrance */}
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 pt-32 pb-20 md:pb-28 lg:pb-32">
-        <div className="hero-animate max-w-4xl">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+          className="max-w-4xl"
+        >
           {/* Badge */}
-          <span className="mb-8 inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-white/80 uppercase backdrop-blur-sm">
+          <motion.span
+            variants={fadeUp}
+            className="mb-8 inline-block rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-white/80 uppercase backdrop-blur-sm"
+          >
             Dari Desa untuk Indonesia
-          </span>
+          </motion.span>
 
           {/* Headline */}
-          <h1 className="font-display text-5xl leading-[0.88] tracking-tight text-white uppercase sm:text-6xl md:text-7xl lg:text-[6.5rem]">
+          <motion.h1
+            variants={fadeUp}
+            className="font-display text-5xl leading-[0.88] tracking-tight text-white uppercase sm:text-6xl md:text-7xl lg:text-[6.5rem]"
+          >
             Suara Desa
             <br />
             di Layar <span className="text-shimmer">Indonesia</span>
-          </h1>
+          </motion.h1>
 
           {/* Subtext */}
-          <p className="mt-8 max-w-md text-base leading-relaxed text-white/50 md:text-lg">
+          <motion.p
+            variants={fadeUp}
+            className="mt-8 max-w-md text-base leading-relaxed text-white/50 md:text-lg"
+          >
             Komunitas media digital yang mengangkat cerita, sosok, dan potensi
             desa ke layar nasional.
-          </p>
+          </motion.p>
 
           {/* CTAs with magnetic hover */}
-          <div className="mt-10 flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
             <MagneticButton>
               <a
                 href="#karya"
@@ -68,8 +103,8 @@ export default function Hero() {
                 Kolaborasi
               </a>
             </MagneticButton>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

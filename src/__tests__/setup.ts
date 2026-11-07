@@ -7,7 +7,7 @@ import { afterEach, vi } from 'vitest'
 const motionProps = new Set([
   'initial', 'animate', 'exit', 'variants', 'transition', 'whileInView',
   'whileHover', 'whileTap', 'whileFocus', 'whileDrag', 'viewport', 'layout',
-  'onAnimationStart', 'onAnimationComplete',
+  'layoutId', 'onAnimationStart', 'onAnimationComplete',
 ])
 
 function filterProps(props: Record<string, unknown>) {
