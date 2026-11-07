@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { ArrowDownIcon, ChatBubbleIcon } from '@radix-ui/react-icons'
+import MagneticButton from './MagneticButton'
 
 export default function Hero() {
   return (
@@ -37,32 +38,36 @@ export default function Hero() {
             desa ke layar nasional.
           </p>
 
-          {/* CTAs */}
+          {/* CTAs with magnetic hover */}
           <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#karya"
-              className="group bg-merah hover:bg-merah-deep hover:shadow-merah/25 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold tracking-wider text-white uppercase transition-all hover:shadow-lg active:scale-[0.96]"
-            >
-              Lihat Karya
-              <ArrowDownIcon
-                width={16}
-                height={16}
-                className="transition-transform duration-300 group-hover:translate-y-0.5"
-              />
-            </a>
-            <a
-              href="https://wa.me/6287878022856"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-bold tracking-wider text-white/80 uppercase transition-all hover:border-white/40 hover:bg-white/5 hover:text-white active:scale-[0.96]"
-            >
-              <ChatBubbleIcon
-                width={16}
-                height={16}
-                className="transition-transform duration-300 group-hover:scale-110"
-              />
-              Kolaborasi
-            </a>
+            <MagneticButton>
+              <a
+                href="#karya"
+                className="group bg-merah hover:bg-merah-deep hover:shadow-merah/25 btn-pulse inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold tracking-wider text-white uppercase transition-all hover:shadow-lg active:scale-[0.96]"
+              >
+                Lihat Karya
+                <ArrowDownIcon
+                  width={16}
+                  height={16}
+                  className="transition-transform duration-300 group-hover:translate-y-0.5"
+                />
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="https://wa.me/6287878022856"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-bold tracking-wider text-white/80 uppercase transition-all hover:border-white/40 hover:bg-white/5 hover:text-white active:scale-[0.96]"
+              >
+                <ChatBubbleIcon
+                  width={16}
+                  height={16}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+                Kolaborasi
+              </a>
+            </MagneticButton>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import { karya, type KaryaKategori } from '@/content/data'
+import MotionReveal from './MotionReveal'
 
 const filters: Array<KaryaKategori | 'Semua'> = [
   'Semua',
@@ -67,33 +69,52 @@ export default function Karya() {
     <section id="karya" className="bg-arang py-20 md:py-32">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="font-display text-3xl tracking-tight text-white uppercase md:text-5xl lg:text-6xl">
-            Karya Pilihan
-          </h2>
+          <MotionReveal variant="left">
+            <h2 className="font-display text-3xl tracking-tight text-white uppercase md:text-5xl lg:text-6xl">
+              Karya Pilihan
+            </h2>
+          </MotionReveal>
 
           {/* Filter tabs */}
-          <div className="flex flex-wrap gap-2">
-            {filters.map((f) => (
-              <button
-                key={f}
-                onClick={() => setActive(f)}
-                className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
-                  active === f
-                    ? 'bg-merah text-white'
-                    : 'text-white/35 hover:text-white/60'
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+          <MotionReveal variant="right" delay={0.1}>
+            <div className="flex flex-wrap gap-2">
+              {filters.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setActive(f)}
+                  className={`rounded-full px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
+                    active === f
+                      ? 'bg-merah text-white'
+                      : 'text-white/35 hover:text-white/60'
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+          </MotionReveal>
         </div>
 
-        {/* Typography-driven portfolio list */}
+        {/* Typography-driven portfolio list with AnimatePresence */}
         <div className="mt-10 md:mt-14">
-          {filtered.map((item, i) => (
-            <KaryaRow key={`${item.mitra}-${i}`} item={item} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filtered.map((item, i) => (
+              <motion.div
+                key={`${item.mitra}-${item.kategori}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{
+                  duration: 0.35,
+                  delay: i * 0.04,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                layout
+              >
+                <KaryaRow item={item} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
           {/* Bottom border */}
           <div className="border-t border-white/10" />
         </div>

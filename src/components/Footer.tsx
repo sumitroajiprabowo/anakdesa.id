@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import { navLinks } from '@/content/data'
+import MotionReveal from './MotionReveal'
 
 export default function Footer() {
   return (
     <footer className="bg-arang text-teks-on-dark/70 pt-16 pb-8 text-sm md:pt-20 md:pb-10">
+      <MotionReveal variant="up">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-6 md:grid-cols-4">
         {/* Brand */}
         <div>
@@ -127,6 +129,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+      </MotionReveal>
 
       {/* Bottom bar */}
       <div className="text-teks-on-dark/40 mx-auto mt-12 max-w-[1200px] border-t border-white/10 px-6 pt-6 text-center text-xs">
