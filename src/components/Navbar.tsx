@@ -15,80 +15,90 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handle)
   }, [])
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   // Close menu on navigation
   const close = () => setOpen(false)
 
   return (
-    <nav
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-arang/95 shadow-md backdrop-blur-sm' : 'bg-transparent'
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="shrink-0">
-          <Image
-            src="/images/logo-anakdesa-white.png"
-            alt="Anak Desa Indonesia"
-            width={160}
-            height={40}
-            className="h-9 w-auto"
-          />
-        </Link>
-
-        {/* Desktop links */}
-        <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-sm font-medium text-white/80 transition-colors hover:text-white"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop CTA */}
-        <a
-          href="#kontak"
-          className="bg-merah hover:bg-merah-deep hidden rounded-full px-5 py-2.5 text-sm font-bold text-white transition-colors md:inline-block"
-        >
-          Ajak Kolaborasi
-        </a>
-
-        {/* Hamburger */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
-          aria-label={open ? 'Tutup menu' : 'Buka menu'}
-          aria-expanded={open}
-        >
-          <span className="sr-only">{open ? 'Tutup' : 'Menu'}</span>
-          <div className="space-y-1.5">
-            <span
-              className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
-                open ? 'translate-y-2 rotate-45' : ''
-              }`}
+    <>
+      <nav
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-arang/95 shadow-md backdrop-blur-sm' : 'bg-transparent'
+        }`}
+      >
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
+          {/* Logo */}
+          <Link href="/" className="shrink-0">
+            <Image
+              src="/images/logo-anakdesa-white.png"
+              alt="Anak Desa Indonesia"
+              width={160}
+              height={40}
+              loading="eager"
+              className="h-9 w-auto"
             />
-            <span
-              className={`block h-0.5 w-6 bg-white transition-opacity duration-300 ${
-                open ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
-                open ? '-translate-y-2 -rotate-45' : ''
-              }`}
-            />
-          </div>
-        </button>
-      </div>
+          </Link>
 
-      {/* Mobile fullscreen menu */}
+          {/* Desktop links */}
+          <ul className="hidden items-center gap-8 md:flex">
+            {navLinks.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop CTA */}
+          <a
+            href="#kontak"
+            className="bg-merah hover:bg-merah-deep hidden rounded-full px-5 py-2.5 text-sm font-bold text-white transition-colors md:inline-block"
+          >
+            Ajak Kolaborasi
+          </a>
+
+          {/* Hamburger — opens menu */}
+          <button
+            onClick={() => setOpen(true)}
+            className="flex h-10 w-10 items-center justify-center md:hidden"
+            aria-label="Buka menu"
+          >
+            <span className="sr-only">Menu</span>
+            <div className="space-y-1.5">
+              <span className="block h-0.5 w-6 bg-white" />
+              <span className="block h-0.5 w-6 bg-white" />
+              <span className="block h-0.5 w-6 bg-white" />
+            </div>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile fullscreen menu — outside nav to avoid backdrop-filter containing block */}
       {open && (
-        <div className="bg-arang fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden">
+        <div className="bg-arang fixed inset-0 z-[55] flex flex-col items-center justify-center gap-8 md:hidden">
+          {/* Close button — top right */}
+          <button
+            onClick={close}
+            className="absolute right-6 top-4 flex h-10 w-10 items-center justify-center"
+            aria-label="Tutup menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-white">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -108,6 +118,6 @@ export default function Navbar() {
           </a>
         </div>
       )}
-    </nav>
+    </>
   )
 }

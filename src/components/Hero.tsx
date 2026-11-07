@@ -52,6 +52,8 @@ export default function Hero() {
             </a>
             <a
               href="https://wa.me/6287878022856"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-sm font-bold tracking-wider text-white/80 uppercase transition-all hover:border-white/40 hover:bg-white/5 hover:text-white active:scale-[0.96]"
             >
               <ChatBubbleIcon

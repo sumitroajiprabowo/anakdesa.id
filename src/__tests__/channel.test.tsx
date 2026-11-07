@@ -4,9 +4,11 @@ import { render, screen } from '@testing-library/react'
 // Mock the youtube module before importing Channel
 vi.mock('@/lib/youtube', () => ({
   getLatestVideo: vi.fn().mockResolvedValue({
+    id: 'test123',
     title: 'Video Terbaru Test',
     url: 'https://youtube.com/watch?v=test123',
     thumbnail: 'https://i.ytimg.com/vi/test123/maxresdefault.jpg',
+    published: '2026-01-01T00:00:00Z',
   }),
 }))
 

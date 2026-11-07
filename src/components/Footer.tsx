@@ -3,7 +3,7 @@ import { navLinks } from '@/content/data'
 
 export default function Footer() {
   return (
-    <footer className="bg-arang text-teks-on-dark/70 py-16 text-sm md:py-20">
+    <footer className="bg-arang text-teks-on-dark/70 pt-16 pb-8 text-sm md:pt-20 md:pb-10">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-6 md:grid-cols-4">
         {/* Brand */}
         <div>
@@ -24,8 +24,7 @@ export default function Footer() {
           <h4 className="mb-3 text-xs font-bold tracking-widest text-white uppercase">
             Kontak
           </h4>
-          <p className="mt-2">WhatsApp +62 878-7802-2856</p>
-          <p>Email admin@anakdesa.id</p>
+          <p className="mt-2">Email admin@anakdesa.id</p>
         </div>
 
         {/* Ikuti Kami */}
@@ -37,6 +36,8 @@ export default function Footer() {
             {/* YouTube */}
             <a
               href="https://www.youtube.com/@AnakDesaIndonesia"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="YouTube"
               className="text-teks-on-dark/60 transition-colors hover:text-white"
             >
@@ -53,6 +54,8 @@ export default function Footer() {
             {/* Instagram */}
             <a
               href="https://www.instagram.com/anakdesaid/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="text-teks-on-dark/60 transition-colors hover:text-white"
             >
@@ -69,6 +72,8 @@ export default function Footer() {
             {/* Facebook */}
             <a
               href="https://www.facebook.com/anakdesaind/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook"
               className="text-teks-on-dark/60 transition-colors hover:text-white"
             >
@@ -85,6 +90,8 @@ export default function Footer() {
             {/* TikTok */}
             <a
               href="https://www.tiktok.com/@anakdesa.id"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="TikTok"
               className="text-teks-on-dark/60 transition-colors hover:text-white"
             >
