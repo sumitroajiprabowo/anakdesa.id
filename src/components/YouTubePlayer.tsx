@@ -17,7 +17,7 @@ export default function YouTubePlayer({ videoId, title, thumbnail }: Props) {
     return (
       <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10">
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -39,6 +39,7 @@ export default function YouTubePlayer({ videoId, title, thumbnail }: Props) {
           alt={title}
           width={1280}
           height={720}
+          loading="eager"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
 
