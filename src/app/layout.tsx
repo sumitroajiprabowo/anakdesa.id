@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Sora, Inter, Plus_Jakarta_Sans } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+
 import './globals.css'
 
 const sora = Sora({
@@ -149,7 +149,6 @@ export default function RootLayout({
       </head>
       <body className="font-body overflow-x-hidden antialiased">
         {children}
-        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
