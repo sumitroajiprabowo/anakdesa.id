@@ -20,9 +20,11 @@ ima-anakdesa.pub
 # Build / deps
 node_modules/
 .next/
+.open-next/
 out/
 dist/
 .vercel/
+.wrangler/
 tsconfig.tsbuildinfo
 
 # Development screenshots & temp images

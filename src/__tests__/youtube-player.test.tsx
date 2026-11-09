@@ -29,7 +29,7 @@ describe('YouTubePlayer', () => {
 
     const iframe = container.querySelector('iframe')
     expect(iframe).toBeInTheDocument()
-    expect(iframe?.src).toContain('youtube-nocookie.com/embed/abc123')
+    expect(iframe?.src).toContain('youtube.com/embed/abc123')
     expect(iframe?.src).toContain('autoplay=1')
     expect(iframe).toHaveAttribute('title', 'Test Video Title')
   })
