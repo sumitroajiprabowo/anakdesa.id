@@ -6,15 +6,18 @@ anakdesa.id — showcase landing page untuk Anak Desa Indonesia (komunitas/CSO).
 
 ## Stack
 
-Next.js 15 App Router, Tailwind CSS v4, TypeScript strict, Vercel deployment.
+Next.js 16 App Router, Tailwind CSS v4, TypeScript strict, dual-platform (Cloudflare Workers primary / Vercel fallback).
 
 ## Commands
 
 - `npm run dev` — dev server
-- `npm run build` — production build
+- `npm run build` — production build (Vercel)
 - `npm run lint` — ESLint (`src/`)
 - `npm test` — unit tests (Vitest)
 - `npm run test:e2e` — E2E tests (Playwright)
+- `npm run cf-build` — build for Cloudflare Workers
+- `npm run preview` — build + local preview (wrangler)
+- `npm run deploy` — build + deploy to Cloudflare Workers
 
 ## Conventions
 

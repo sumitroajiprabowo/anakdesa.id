@@ -24,7 +24,7 @@
 | **Animation** | [Motion 14](https://motion.dev) — scroll-triggered reveals, stagger orchestration, spring physics |
 | **Icons** | [Radix UI Icons](https://www.radix-ui.com/icons) |
 | **Testing** | [Vitest 5](https://vitest.dev) + [Testing Library](https://testing-library.com) (unit) · [Playwright](https://playwright.dev) (E2E) |
-| **Hosting** | [Vercel](https://vercel.com) — auto-deploy on push to `main` |
+| **Hosting** | Dual-platform: [Cloudflare Workers](https://workers.cloudflare.com) (primary) or [Vercel](https://vercel.com) |
 
 ## Getting Started
 
@@ -40,13 +40,31 @@ Open [localhost:3000](http://localhost:3000).
 ## Scripts
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Production build
-npm run lint         # Run ESLint on src/
-npm test             # Run unit tests
-npm run test:coverage # Unit tests with coverage report
-npm run test:e2e     # Run Playwright E2E tests
+npm run dev            # Start development server
+npm run build          # Production build (Vercel)
+npm run lint           # Run ESLint on src/
+npm test               # Run unit tests
+npm run test:coverage  # Unit tests with coverage report
+npm run test:e2e       # Run Playwright E2E tests
+
+# Cloudflare deployment
+npm run cf-build       # Build for Cloudflare Workers
+npm run preview        # Build + local preview with wrangler
+npm run deploy         # Build + deploy to Cloudflare Workers
 ```
+
+## Dual-Platform Deployment
+
+The codebase supports both Vercel and Cloudflare Workers via the `DEPLOY_TARGET` env var in `next.config.ts`:
+
+| Platform | Image Optimization | Output | Cache |
+|----------|--------------------|--------|-------|
+| **Vercel** | Native (optimized) | `standalone` | Vercel CDN |
+| **Cloudflare** | Unoptimized (free tier) | Workers bundle | R2 incremental cache |
+
+**Cloudflare** (current production): `npm run deploy` builds with `@opennextjs/cloudflare` and deploys to Workers. ISR cache is stored in an R2 bucket.
+
+**Vercel**: Push to `main` or run `vercel deploy`. No code changes needed — the config auto-detects the platform.
 
 ## Testing
 
@@ -58,10 +76,6 @@ Unit tests run on Vitest with Happy-DOM. Motion is mocked at setup level to avoi
 | Branches | 100% |
 | Functions | 100% |
 | Lines | 100% |
-
-## Deployment
-
-Push to `main` triggers a Vercel production deploy. YouTube latest video refreshes every hour through ISR — no manual redeploy needed.
 
 ## License
 
