@@ -110,6 +110,7 @@ export const channels: Channel[] = [
 export type Partner = {
   nama: string
   logo: string
+  url?: string
 }
 
 export const partners: Partner[] = [
@@ -119,6 +120,7 @@ export const partners: Partner[] = [
   { nama: 'Kala Pemalang', logo: '/images/partners/logo-kala.jpg' },
   { nama: 'Mas Sajak', logo: '/images/partners/logo-massajak.jpg' },
   { nama: 'Puspindes', logo: '/images/partners/logo-puspindes.jpg' },
+  { nama: 'Kilat.net', logo: '/images/partners/logo-kilatnet.svg', url: 'https://kilat.net.id' },
 ]
 
 // ── Stats ──────────────────────────────────────
