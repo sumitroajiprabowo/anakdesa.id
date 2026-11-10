@@ -20,28 +20,58 @@ export default function Mitra() {
         <div className="marquee-wrapper mt-10">
           {/* Two identical tracks side by side for seamless infinite scroll */}
           <div className="marquee-track">
-            {partners.map((p) => (
-              <Image
-                key={p.nama}
-                src={p.logo}
-                alt={p.nama}
-                width={120}
-                height={56}
-                className="h-14 w-auto shrink-0 object-contain grayscale transition-all duration-300 hover:grayscale-0"
-              />
-            ))}
+            {partners.map((p) => {
+              const img = (
+                <Image
+                  key={p.nama}
+                  src={p.logo}
+                  alt={p.nama}
+                  width={120}
+                  height={56}
+                  className="h-14 w-auto shrink-0 object-contain grayscale transition-all duration-300 hover:grayscale-0"
+                />
+              )
+              return p.url ? (
+                <a
+                  key={p.nama}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0"
+                >
+                  {img}
+                </a>
+              ) : (
+                img
+              )
+            })}
           </div>
           <div className="marquee-track" aria-hidden="true">
-            {partners.map((p) => (
-              <Image
-                key={p.nama}
-                src={p.logo}
-                alt={p.nama}
-                width={120}
-                height={56}
-                className="h-14 w-auto shrink-0 object-contain grayscale transition-all duration-300 hover:grayscale-0"
-              />
-            ))}
+            {partners.map((p) => {
+              const img = (
+                <Image
+                  key={p.nama}
+                  src={p.logo}
+                  alt={p.nama}
+                  width={120}
+                  height={56}
+                  className="h-14 w-auto shrink-0 object-contain grayscale transition-all duration-300 hover:grayscale-0"
+                />
+              )
+              return p.url ? (
+                <a
+                  key={p.nama}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0"
+                >
+                  {img}
+                </a>
+              ) : (
+                img
+              )
+            })}
           </div>
         </div>
       </MotionReveal>
